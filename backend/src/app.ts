@@ -1,3 +1,10 @@
+/*
+Responsible for creating/configuring Express 
+routes 
+middleware 
+error handling 
+*/
+
 import express from "express"
 
 const app = express()

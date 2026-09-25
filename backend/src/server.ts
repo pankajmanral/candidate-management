@@ -1,3 +1,7 @@
+/* 
+Responsible for actually starting the server 
+*/
+
 import "dotenv/config";
 import app from "./app";
 import { connectDatabase } from "./config/database";
