@@ -1,10 +1,3 @@
-/*
-Responsible for creating/configuring Express 
-routes 
-middleware 
-error handling 
-*/
-
 import express from "express"
 
 const app = express()
@@ -12,24 +5,38 @@ const app = express()
 app.use(express.json())
 
 app.get("/", (req, res) => {
-    res.json({
+    res.status(200).json({
         success: true,
-        message: "Candidate management is running."
+        message: 'Health check pass.'
     })
 })
 
-app.get("/api/v1/candidate", (req, res) => {
-    res.json({
+app.get("/api/v1/candidates", (req, res) => {
+    res.status(200).json({
         success: true,
         data: []
     })
 })
 
 app.post("/api/v1/add-candidate", (req, res) => {
-    console.log(req.body)
-    res.json({
+    res.status(201).json({
         success: true,
         data: req.body
+    })
+})
+
+// :id -> params 
+app.get("/api/v1/candidate/:id", (req, res) => {
+    res.json({
+        success: true,
+        candidateId: req.params.id
+    })
+})
+
+app.get("/api/v1/get-candidate", (req, res) => {
+    res.json({
+        success: true,
+        data: req.query
     })
 })
 

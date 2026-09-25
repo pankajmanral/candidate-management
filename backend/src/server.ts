@@ -1,11 +1,18 @@
-/* 
-Responsible for actually starting the server 
-*/
-
+import "dotenv/config";
 import app from "./app";
+import { connectDatabase } from "./config/database";
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`)
-})
+const startServer = async():Promise<void> => {
+
+    console.log(process.env.MONGODBURI)
+
+    await connectDatabase()
+    app.listen(PORT, () => {
+        console.log(`Server running on PORT : ${PORT}.`)
+    })
+
+}
+
+startServer()
